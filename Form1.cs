@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading; // 추가된 namespace
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
