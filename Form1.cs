@@ -17,11 +17,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            this.btn_Name.Click += BtnClick_Text;
-            this.button1.Click += BtnClick2;
+            this.button1.Click += BtnClick1;
+            this.button2.Click += BtnClick2;
         }
 
-        public void BtnClick_Text(object sender, EventArgs e)
+        public void BtnClick1(object sender, EventArgs e)
         {
             Thread thread1 = new Thread(new ThreadStart(Calc));
             thread1.Start();
@@ -52,14 +52,14 @@ namespace WindowsFormsApp1
 
         public void BtnClick2(object sender, EventArgs e)
         {
-            //Thread thread = new Thread(new ThreadStart(delegate ()
-            //{
+            Thread thread = new Thread(new ThreadStart(delegate ()
+            {
                     string message = string.Empty;
 
                     message = string.Format(txt_Message.Text);
                     MessageBox.Show(message);
-            //}));
-            //thread.Start();
+            }));
+            thread.Start();
 
         }
     }
