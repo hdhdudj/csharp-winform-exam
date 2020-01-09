@@ -13,6 +13,9 @@ namespace WindowsFormsApp1
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        int a = 0;
+        Thread t;
+        Boolean b;
         public Form()
         {
             InitializeComponent();
@@ -23,19 +26,26 @@ namespace WindowsFormsApp1
 
         public void BtnClick1(object sender, EventArgs e)
         {
-            Thread thread1 = new Thread(new ThreadStart(Calc));
-            thread1.Start();
-   }
+            if(b == true)
+            {
+                t.Abort();
+                b = false;
+                return;
+            }
+            t = new Thread(new ThreadStart(Calc));
+            t.Start();
+            b = true;
+        }
 
         delegate void aCall(int a);
 
         private void Calc()
         {
-            int a = 0;
             while (true)
             {
                 txt_Message.Invoke(new aCall(setText), new object[] {a});
                 a++;
+                Thread.Sleep(500);
             }
         }
 
